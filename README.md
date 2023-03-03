@@ -51,13 +51,18 @@ The data page has 3 tabs, to upload new files, to add a new class, and to delete
 
 ## TODO
 
+- [ ] Compose indices of multiple lectures and query on all of them
+  - [ ] selection to choose all lectures
+  - [ ] loop through all current index, create the ones that haven't been created, and compose them together
+  - [ ] as new slides come in, insert it to the index
+  - [ ] query on the composed index
+  - references
+    - [Composability — LlamaIndex documentation](https://gpt-index.readthedocs.io/en/latest/how_to/composability.html)
+    - [gpt_index/ComposableIndices.ipynb](https://github.com/jerryjliu/gpt_index/blob/main/examples/composable_indices/ComposableIndices.ipynb)
 - [ ] experiment with custom chatgpt api prompt
 - [ ] figure out cloud hosting that accepts openai api key
 - [ ] clean up code, specifically the way I'm listing files
 - [ ] use only boto resource to upload file object and check head object (currently using clients and resources)
-- [ ] Composing indices
-  - [Composability — LlamaIndex documentation](https://gpt-index.readthedocs.io/en/latest/how_to/composability.html)
-  - [gpt_index/ComposableIndices.ipynb](https://github.com/jerryjliu/gpt_index/blob/main/examples/composable_indices/ComposableIndices.ipynb)
 
 ## FAQ
 
