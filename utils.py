@@ -1,20 +1,16 @@
-import streamlit as st
-import boto3
-from botocore.errorfactory import ClientError
-
-from pprint import pprint
-import os
 import base64
 import logging
+import os
 import sys
 from collections import defaultdict
-import openai
-import json
 
+import boto3
+import openai
+import streamlit as st
+from botocore.errorfactory import ClientError
+from dotenv import load_dotenv
 from llama_index import GPTSimpleVectorIndex, download_loader
 from llama_index.langchain_helpers.chatgpt import ChatGPTLLMPredictor
-
-from dotenv import load_dotenv
 
 logging.basicConfig(stream=sys.stdout, level=logging.DEBUG)
 logging.getLogger().addHandler(logging.StreamHandler(stream=sys.stdout))

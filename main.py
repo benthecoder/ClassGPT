@@ -1,15 +1,14 @@
 import streamlit as st
-
 from streamlit_option_menu import option_menu
 
 from utils import (
-    query_gpt,
-    get_all_files,
-    show_pdf,
     create_folder,
-    upload_pdf_to_s3,
-    remove_folder,
+    get_all_files,
+    query_gpt,
     remove_file,
+    remove_folder,
+    show_pdf,
+    upload_pdf_to_s3,
 )
 
 

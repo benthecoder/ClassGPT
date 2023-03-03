@@ -1,0 +1,4 @@
+[flake8]
+max-line-length = 120
+exclude = .tox,.git,venv
+ignore = E501, W503, E203
