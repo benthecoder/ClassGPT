@@ -4,11 +4,13 @@
 
 Built with [LlamaIndex](https://github.com/jerryjliu/gpt_index) and uses the latest [ChatGPT API](https://platform.openai.com/docs/guides/chat) from [OpenAI](https://openai.com/). The lecture pdfs and indices are stored on s3.
 
-The code is pretty spaghetti, but it works for now.
+The code is pretty spaghetti, but it works.
 
 Inspired by [AthenGPT](http://athensgpt.com/)
 
 ## App Demo
+
+https://user-images.githubusercontent.com/49143413/222878151-42354446-5234-41fa-ad36-002dd74a5408.mp4
 
 ## How this works
 
