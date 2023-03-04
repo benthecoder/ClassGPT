@@ -51,6 +51,12 @@ TODO
     streamlit run app/01_❓_Ask.py
 ```
 
+## Docker
+
+```bash
+    docker compose up
+```
+
 ## TODO
 
 - [ ] Host on EC2
@@ -111,3 +117,10 @@ For `text-embedding-ada-002`, cost is $0.0004 / 1k tokens or 3000 pages/dollar
 - [python - boto3 file_upload does it check if file exists - Stack Overflow](https://stackoverflow.com/questions/44978426/boto3-file-upload-does-it-check-if-file-exists)
 - [Boto 3: Resource vs Client](https://www.learnaws.org/2021/02/24/boto3-resource-client/)
 - [python - Writing json to file in s3 bucket - Stack Overflow](https://stackoverflow.com/questions/46844263/writing-json-to-file-in-s3-bucket)
+
+### Docker stuff
+
+- [amazon web services - What is the best way to pass AWS credentials to a Docker container? - Stack Overflow](https://stackoverflow.com/questions/36354423/what-is-the-best-way-to-pass-aws-credentials-to-a-docker-container)
+- [docker-compose up failing due to: error: can't find Rust compiler · Issue #572 · acheong08/ChatGPT](https://github.com/acheong08/ChatGPT/issues/572)
+- [software installation - How to install a package with apt without the "Do you want to continue [Y/n]?" prompt? - Ask Ubuntu](https://askubuntu.com/questions/523962/how-to-install-a-package-with-apt-without-the-do-you-want-to-continue-y-n-p)
+- [How to use sudo inside a docker container? - Stack Overflow](https://stackoverflow.com/questions/25845538/how-to-use-sudo-inside-a-docker-container)

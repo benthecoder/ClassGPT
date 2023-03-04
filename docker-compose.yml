@@ -1,0 +1,12 @@
+version: '1'
+
+services:
+  classgpt:
+    image: benthecoder/classgpt
+    build: .
+    container_name: classgpt
+    volumes:
+      - ~/.aws/:/root/.aws:ro
+    restart: unless-stopped
+    ports:
+      - 8501:8501
