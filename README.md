@@ -17,7 +17,7 @@ https://user-images.githubusercontent.com/49143413/222878151-42354446-5234-41fa-
 TODO
 
 - explain what llamaindex does
-- explain this [index](notebooks/index.json) created by LlamaIndex.
+- explain [index](notebooks/index.json) created by LlamaIndex.
 
 ## Installation and setup
 
@@ -64,8 +64,6 @@ TODO
     - [gpt_index/ComposableIndices.ipynb](https://github.com/jerryjliu/gpt_index/blob/main/examples/composable_indices/ComposableIndices.ipynb)
 - [ ] experiment with custom chatgpt api prompt
 - [ ] figure out cloud hosting that accepts openai api key
-- [ ] clean up code, specifically the way I'm listing files
-- [ ] use only boto resource to upload file object and check head object (currently using clients and resources)
 
 ## FAQ
 
