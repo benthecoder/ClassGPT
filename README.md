@@ -8,15 +8,14 @@ The code is pretty spaghetti, but it works for now.
 
 Inspired by [AthenGPT](http://athensgpt.com/)
 
-## Screenshot
+## App Demo
 
-![screenshot](img/home.png)
+## How this works
 
-The ask page is where you select a class, and a lecture note, and query like how you would with ChatGPT.
+TODO
 
-![screenshot](img/data.png)
-
-The data page has 3 tabs, to upload new files, to add a new class, and to delete all files or specific files for a class.
+- explain what llamaindex does
+- explain this [index](notebooks/index.json) created by LlamaIndex.
 
 ## Installation and setup
 
@@ -46,11 +45,13 @@ The data page has 3 tabs, to upload new files, to add a new class, and to delete
 6. run streamlit app
 
 ```bash
-    streamlit run main.py
+    cd app/
+    streamlit run app/01_❓_Ask.py
 ```
 
 ## TODO
 
+- [ ] Host on EC2
 - [ ] Compose indices of multiple lectures and query on all of them
   - [ ] selection to choose all lectures
   - [ ] loop through all current index, create the ones that haven't been created, and compose them together
@@ -90,6 +91,13 @@ For `text-embedding-ada-002`, cost is $0.0004 / 1k tokens or 3000 pages/dollar
 - [Embeddings - OpenAI API](https://platform.openai.com/docs/guides/embeddings/use-cases)
 - [What Are Word and Sentence Embeddings?](https://txt.cohere.ai/sentence-word-embeddings/)
 
+## References
+
+### Streamlit
+
+- [How do I increase the upload limit of st.file_uploader on Streamlit Community Cloud? - Streamlit Docs](https://docs.streamlit.io/knowledge-base/deploy/increase-file-uploader-limit-streamlit-cloud)
+- [hayabhay/whisper-ui: Streamlit UI for OpenAI's Whisper](https://github.com/hayabhay/whisper-ui)
+
 ### LlamaIndex
 
 - [PDF Loader](https://llamahub.ai/l/file-pdf)
@@ -97,10 +105,6 @@ For `text-embedding-ada-002`, cost is $0.0004 / 1k tokens or 3000 pages/dollar
 - [LlamaIndex Usage Pattern — LlamaIndex documentation](https://gpt-index.readthedocs.io/en/latest/guides/usage_pattern.html#)
   - [Saving index](https://gpt-index.readthedocs.io/en/latest/guides/usage_pattern.html#optional-save-the-index-for-future-use)
 - [gpt_index/SimpleIndexDemo-ChatGPT.ipynb](https://github.com/jerryjliu/gpt_index/blob/main/examples/vector_indices/SimpleIndexDemo-ChatGPT.ipynb)
-
-### Streamlit
-
-- [Create a Multi-Page App with the New Streamlit-Option-Menu Component | by My Data Talk | CodeX | Medium](https://medium.com/codex/create-a-multi-page-app-with-the-new-streamlit-option-menu-component-3e3edaf7e7ad)
 
 ### Boto3
 
