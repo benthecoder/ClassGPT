@@ -19,7 +19,21 @@ TODO
 - explain what llamaindex does
 - explain [index](notebooks/index.json) created by LlamaIndex.
 
-## Installation and setup
+## Usage
+
+### Configuration and secrets
+
+1. configure aws ([quickstart](https://docs.aws.amazon.com/cli/latest/userguide/cli-configure-quickstart.html))
+
+```bash
+    aws configure
+```
+
+2. create s3 bucket named `"classgpt"`
+
+3. rename [.env.local.example] to `.env` and add your openai credentials
+
+### Locally
 
 1. create python env
 
@@ -28,34 +42,28 @@ TODO
     conda activate classgpt
 ```
 
-2. create s3 bucket named `"classgpt"`
-
-3. configure aws ([quickstart](https://docs.aws.amazon.com/cli/latest/userguide/cli-configure-quickstart.html))
-
-```bash
-    aws configure
-```
-
-4. rename [.env.local.example] to `.env` and add your openai credentials
-
-5. install dependencies
+2. install dependencies
 
 ```bash
     pip install -r requirements.txt
 ```
 
-6. run streamlit app
+3. run streamlit app
 
 ```bash
     cd app/
     streamlit run app/01_❓_Ask.py
 ```
 
-## Docker
+### Docker
+
+Alternative, you can use Docker
 
 ```bash
     docker compose up
 ```
+
+Then open up a new tab and navigate to http://localhost:8501/
 
 ## TODO
 
@@ -122,5 +130,6 @@ For `text-embedding-ada-002`, cost is $0.0004 / 1k tokens or 3000 pages/dollar
 
 - [amazon web services - What is the best way to pass AWS credentials to a Docker container? - Stack Overflow](https://stackoverflow.com/questions/36354423/what-is-the-best-way-to-pass-aws-credentials-to-a-docker-container)
 - [docker-compose up failing due to: error: can't find Rust compiler · Issue #572 · acheong08/ChatGPT](https://github.com/acheong08/ChatGPT/issues/572)
+- [linux - When installing Rust toolchain in Docker, Bash `source` command doesn't work - Stack Overflow](https://stackoverflow.com/questions/49676490/when-installing-rust-toolchain-in-docker-bash-source-command-doesnt-work)
 - [software installation - How to install a package with apt without the "Do you want to continue [Y/n]?" prompt? - Ask Ubuntu](https://askubuntu.com/questions/523962/how-to-install-a-package-with-apt-without-the-do-you-want-to-continue-y-n-p)
 - [How to use sudo inside a docker container? - Stack Overflow](https://stackoverflow.com/questions/25845538/how-to-use-sudo-inside-a-docker-container)
