@@ -20,14 +20,18 @@ s3 = S3(bucket_name)
 
 all_classes = s3.list_files()
 
-chosen_class = st.selectbox("Select a class", list(all_classes.keys()) + ["--"], index=len(all_classes))
+chosen_class = st.selectbox(
+    "Select a class", list(all_classes.keys()) + ["--"], index=len(all_classes)
+)
 
 st.session_state.chosen_class = chosen_class
 
 if st.session_state.chosen_class != "--":
     all_pdfs = all_classes[chosen_class]
 
-    chosen_pdf = st.selectbox("Select a PDF file", all_pdfs + ["--"], index=len(all_pdfs))
+    chosen_pdf = st.selectbox(
+        "Select a PDF file", all_pdfs + ["--"], index=len(all_pdfs)
+    )
 
     st.session_state.chosen_pdf = chosen_pdf
 
@@ -41,7 +45,7 @@ if st.session_state.chosen_class != "--":
                 Here are some prompts:
                 - `What is the main idea of this lecture in simple terms?`
                 - `Summarize the main points of slide 5`
-                - `Provide 5 practice questions with answers based on this lecture`
+                - `Provide 5 practice questions on this lecture with answers`
                 """
             )
             query = st.text_input("Enter your question")

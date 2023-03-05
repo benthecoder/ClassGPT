@@ -3,7 +3,6 @@ import logging
 import os
 import sys
 
-import boto3
 import openai
 import streamlit as st
 from dotenv import load_dotenv
@@ -86,7 +85,6 @@ def show_pdf(folder_name, file_name):
     with open(file_path, "rb") as f:
         base64_pdf = base64.b64encode(f.read()).decode("utf-8")
 
-    # create iframe where width is restricted to column size but height is set to 100%
     pdf_display = f"""
     <iframe
         src="data:application/pdf;base64,{base64_pdf}"

@@ -23,7 +23,9 @@ with tab1:
 
     if chosen_class != "--":
         with st.form("upload_pdf"):
-            uploaded_files = st.file_uploader("Upload a PDF file", type="pdf", accept_multiple_files=True)
+            uploaded_files = st.file_uploader(
+                "Upload a PDF file", type="pdf", accept_multiple_files=True
+            )
 
             submit_button = st.form_submit_button("Upload")
 

@@ -64,11 +64,11 @@ Alternative, you can use Docker
     docker compose up
 ```
 
-Then open up a new tab and navigate to http://localhost:8501/
+Then open up a new tab and navigate to <http://localhost:8501/>
 
 ## TODO
 
-- [ ] implement memory by storing previous queries like https://github.com/hwchase17/notion-qa/blob/master/main.py
+- [ ] implement memory by storing previous queries like <https://github.com/hwchase17/notion-qa/blob/master/main.py>
 - [ ] settings page
   - [ ] that allows users to tweak open ai settings and provide custom prompt
   - [ ] choose local or cloud storage version, so users don't have to setup AWS s3 and everything is local
@@ -84,7 +84,7 @@ Then open up a new tab and navigate to http://localhost:8501/
     - [Composability — LlamaIndex documentation](https://gpt-index.readthedocs.io/en/latest/how_to/composability.html)
     - [gpt_index/ComposableIndices.ipynb](https://github.com/jerryjliu/gpt_index/blob/main/examples/composable_indices/ComposableIndices.ipynb)
     - [Test Complex Queries over Multiple Documents](https://colab.research.google.com/drive/1IJAKd1HIe-LvFRQmd3BCDDIsq6CpOwBj?usp=sharing)
-- [ ] Host on EC2
+- [ ] deploy app on AWS
   - [ ] textbox to input openai api key
 
 ## FAQ
