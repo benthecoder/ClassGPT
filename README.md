@@ -14,7 +14,7 @@ https://user-images.githubusercontent.com/49143413/222878151-42354446-5234-41fa-
 
 LlamaIndex helps you easily connect LLM’s to external data.
 
-The general usage pattern of LlamaIndex for this app is as followed
+The usage pattern of LlamaIndex for this app is as follows:
 
 1. Load in documents with [PDFReader()](https://llamahub.ai/l/file-pdf) from [LlamaHub](https://llamahub.ai/)
 2. Index Construction with `GPTSimpleVectorIndex`
@@ -128,30 +128,44 @@ For `text-davinci-003` model, cost is `$0.02 / 1K tokens`
 
 ### Streamlit
 
-- [How do I increase the upload limit of st.file_uploader on Streamlit Community Cloud? - Streamlit Docs](https://docs.streamlit.io/knowledge-base/deploy/increase-file-uploader-limit-streamlit-cloud)
-- [hayabhay/whisper-ui: Streamlit UI for OpenAI's Whisper](https://github.com/hayabhay/whisper-ui)
-- [Streamlit Deployment Guide (wiki) - 🚀 Deployment - Streamlit](https://discuss.streamlit.io/t/streamlit-deployment-guide-wiki/5099)
+- [Increase upload limit of st.file_uploader](https://docs.streamlit.io/knowledge-base/deploy/increase-file-uploader-limit-streamlit-cloud)
 - [st.cache_resource - Streamlit Docs](https://docs.streamlit.io/library/api-reference/performance/st.cache_resource)
-- [How to Deploy a streamlit application to AWS? Part-3 - YouTube](https://www.youtube.com/watch?v=Jc5GI3v2jtE)
+- [hayabhay/whisper-ui: Streamlit UI for OpenAI's Whisper](https://github.com/hayabhay/whisper-ui)
+
+### Deplyoment
+
+- [Streamlit Deployment Guide (wiki) - 🚀 Deployment - Streamlit](https://discuss.streamlit.io/t/streamlit-deployment-guide-wiki/5099)
+- [How to Deploy a streamlit application to AWS? Part-3](https://www.youtube.com/watch?v=Jc5GI3v2jtE)
 
 ### LlamaIndex
 
+- [LlamaIndex Usage Pattern](https://gpt-index.readthedocs.io/en/latest/guides/usage_pattern.html#)
+- [Saving index](https://gpt-index.readthedocs.io/en/latest/guides/usage_pattern.html#optional-save-the-index-for-future-use)
+
+Loading data
+
 - [PDF Loader](https://llamahub.ai/l/file-pdf)
-- [emptycrown/llama-hub: A library of data loaders for LLMs made by the community -- to be used with GPT Index and/or LangChain](https://github.com/emptycrown/llama-hub/tree/main)
-- [LlamaIndex Usage Pattern — LlamaIndex documentation](https://gpt-index.readthedocs.io/en/latest/guides/usage_pattern.html#)
-  - [Saving index](https://gpt-index.readthedocs.io/en/latest/guides/usage_pattern.html#optional-save-the-index-for-future-use)
+- [llama-hub github repo](https://github.com/emptycrown/llama-hub/tree/main)
+
+ChatGPT
+
 - [gpt_index/SimpleIndexDemo-ChatGPT.ipynb](https://github.com/jerryjliu/gpt_index/blob/main/examples/vector_indices/SimpleIndexDemo-ChatGPT.ipynb)
+
+### Langchain
+
+- [gpt_index/LangchainDemo.ipynb](https://github.com/jerryjliu/gpt_index/blob/main/examples/langchain_demo/LangchainDemo.ipynb)
+- [OpenAIChat](https://langchain.readthedocs.io/en/latest/modules/llms/integrations/openaichat.html)
 
 ### Boto3
 
-- [python - boto3 file_upload does it check if file exists - Stack Overflow](https://stackoverflow.com/questions/44978426/boto3-file-upload-does-it-check-if-file-exists)
+- [boto3 file_upload does it check if file exists](https://stackoverflow.com/questions/44978426/boto3-file-upload-does-it-check-if-file-exists)
 - [Boto 3: Resource vs Client](https://www.learnaws.org/2021/02/24/boto3-resource-client/)
-- [python - Writing json to file in s3 bucket - Stack Overflow](https://stackoverflow.com/questions/46844263/writing-json-to-file-in-s3-bucket)
+- [Writing json to file in s3 bucket](https://stackoverflow.com/questions/46844263/writing-json-to-file-in-s3-bucket)
 
 ### Docker stuff
 
-- [amazon web services - What is the best way to pass AWS credentials to a Docker container? - Stack Overflow](https://stackoverflow.com/questions/36354423/what-is-the-best-way-to-pass-aws-credentials-to-a-docker-container)
+- [amazon web services - What is the best way to pass AWS credentials to a Docker container?](https://stackoverflow.com/questions/36354423/what-is-the-best-way-to-pass-aws-credentials-to-a-docker-container)
 - [docker-compose up failing due to: error: can't find Rust compiler · Issue #572 · acheong08/ChatGPT](https://github.com/acheong08/ChatGPT/issues/572)
-- [linux - When installing Rust toolchain in Docker, Bash `source` command doesn't work - Stack Overflow](https://stackoverflow.com/questions/49676490/when-installing-rust-toolchain-in-docker-bash-source-command-doesnt-work)
+- [linux - When installing Rust toolchain in Docker, Bash `source` command doesn't work](https://stackoverflow.com/questions/49676490/when-installing-rust-toolchain-in-docker-bash-source-command-doesnt-work)
 - [software installation - How to install a package with apt without the "Do you want to continue [Y/n]?" prompt? - Ask Ubuntu](https://askubuntu.com/questions/523962/how-to-install-a-package-with-apt-without-the-do-you-want-to-continue-y-n-p)
-- [How to use sudo inside a docker container? - Stack Overflow](https://stackoverflow.com/questions/25845538/how-to-use-sudo-inside-a-docker-container)
+- [How to use sudo inside a docker container?](https://stackoverflow.com/questions/25845538/how-to-use-sudo-inside-a-docker-container)
