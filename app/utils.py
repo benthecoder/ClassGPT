@@ -16,6 +16,8 @@ logging.getLogger().addHandler(logging.StreamHandler(stream=sys.stdout))
 
 # load OPENAI API KEY
 load_dotenv()
+if os.getenv("OPENAI_API_KEY") is None:
+    st.error("OpenAI API key not set")
 openai.api_key = os.getenv("OPENAI_API_KEY")
 
 s3 = S3("classgpt")
@@ -23,10 +25,11 @@ s3 = S3("classgpt")
 # ------------------- Query GPT ------------------- #
 
 
-def query_gpt(folder_name, file_name, query):
-    if os.getenv("OPENAI_API_KEY") is None:
-        st.error("OpenAI API key not set")
-        return
+@st.cache_resource(show_spinner=False)
+def get_index(folder_name, file_name):
+    """
+    Get the index for a given PDF file. If the index does not exist, create it.
+    """
 
     index_name = file_name.replace(".pdf", ".json")
     llm_predictor = ChatGPTLLMPredictor()
@@ -36,7 +39,6 @@ def query_gpt(folder_name, file_name, query):
         index_tmp_path = f"/tmp/{index_name}"
         s3.download_file(f"{folder_name}/{index_name}", index_tmp_path)
         index = GPTSimpleVectorIndex.load_from_disk(index_tmp_path)
-
     else:
         logging.info("Index not found, creating new index...")
         pdf_tmp_path = f"/tmp/{file_name}"
@@ -56,13 +58,19 @@ def query_gpt(folder_name, file_name, query):
         index_tmp_path = f"/tmp/{index_name}.json"
         index.save_to_disk(index_tmp_path)
 
-        logging.info("Uploading index...")
+        logging.info("Uploading index to s3...")
         with open(index_tmp_path, "rb") as f:
             s3.upload_files(f, f"{folder_name}/{index_name}")
 
+    return index
+
+
+def query_gpt(chosen_class, chosen_pdf, query):
+    llm_predictor = ChatGPTLLMPredictor()
+    index = get_index(chosen_class, chosen_pdf)
     response = index.query(query, llm_predictor=llm_predictor)
 
-    logging.info(response.get_formatted_sources())
+    # logging.info(response.get_formatted_sources())
 
     return response
 

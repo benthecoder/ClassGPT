@@ -127,6 +127,7 @@ For `gpt-3.5-turbo` model (ChatGPTAPI) cost is `$0.002 / 1K tokens`
 - [hayabhay/whisper-ui: Streamlit UI for OpenAI's Whisper](https://github.com/hayabhay/whisper-ui)
 - [Streamlit Deployment Guide (wiki) - 🚀 Deployment - Streamlit](https://discuss.streamlit.io/t/streamlit-deployment-guide-wiki/5099)
 - [st.cache_resource - Streamlit Docs](https://docs.streamlit.io/library/api-reference/performance/st.cache_resource)
+- [How to Deploy a streamlit application to AWS? Part-3 - YouTube](https://www.youtube.com/watch?v=Jc5GI3v2jtE)
 
 ### LlamaIndex
 

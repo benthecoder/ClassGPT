@@ -40,8 +40,7 @@ if st.session_state.chosen_class != "--":
                 """
                 Here are some prompts:
                 - `What is the main idea of this lecture in simple terms?`
-                - `Summarize the idea of <CONCEPT> from the slides`
-                - `Write the <ALGORITHM> from the slides in Python`
+                - `Summarize the main points of slide 5`
                 - `Provide 5 practice questions with answers based on this lecture`
                 """
             )
