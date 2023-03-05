@@ -27,7 +27,7 @@ with tab1:
 
             submit_button = st.form_submit_button("Upload")
 
-            if submit_button:
+            if submit_button and uploaded_files:
                 with st.spinner("Uploading files..."):
                     for uploaded_file in uploaded_files:
                         s3.upload_files(
@@ -36,6 +36,8 @@ with tab1:
                         )
 
                     st.success(f"{len(uploaded_files)} files uploaded")
+            else:
+                st.error("No files uploaded")
 
 with tab2:
     st.subheader("Add a new class")
@@ -46,8 +48,11 @@ with tab2:
         submit_button = st.form_submit_button("Add")
 
         if submit_button:
-            s3.create_folder(add_class)
-            st.success(f"Class {add_class} added")
+            if add_class == "":
+                st.error("Please enter a class name")
+            else:
+                s3.create_folder(add_class)
+                st.success(f"Class {add_class} added")
 
 with tab3:
     st.subheader("Delete a class or a PDF file")
