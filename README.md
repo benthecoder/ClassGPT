@@ -4,7 +4,7 @@
 
 Built with [LlamaIndex](https://github.com/jerryjliu/gpt_index) and uses the latest [ChatGPT API](https://platform.openai.com/docs/guides/chat) from [OpenAI](https://openai.com/). The lecture pdfs and indices are stored on s3.
 
-Inspired by [AthensGPT](http://athensgpt.com/) 
+Inspired by [AthensGPT](http://athensgpt.com/)
 
 ## App Demo
 
@@ -12,11 +12,16 @@ https://user-images.githubusercontent.com/49143413/222878151-42354446-5234-41fa-
 
 ## How this works
 
-- Pdf data loader from [LlamaHub](https://llamahub.ai/) loads the pdf files
-- llamaindex's `GPTSimpleVectorIndex` takes the text data, creates index, and acts as a wrapper for GPT models, which uses
-  - `text-embedding-ada-002` to create embeddings
-  - `gpt-3.5-turbo` to query the embeddings
-  - here's what an index created by LlamaIndex looks like [sample](notebooks/index.json)
+LlamaIndex helps you easily connect LLM’s to external data.
+
+The general usage pattern of LlamaIndex for this app is as followed
+
+1. Load in documents with [PDFReader()](https://llamahub.ai/l/file-pdf) from [LlamaHub](https://llamahub.ai/)
+2. Index Construction with `GPTSimpleVectorIndex`
+   - `text-embedding-ada-002` is used to create embeddings
+   - [sample index](notebooks/index.json)
+3. Query the index with [ChatGPTLLMPredictor](https://github.com/jerryjliu/gpt_index/blob/7943157bed3b5a8527ac0f8dbe863ca0a39c22d0/gpt_index/langchain_helpers/chatgpt.py#L15)
+   - uses the latest ChatGPT model `gpt-3.5-turbo`
 
 ## Usage
 
@@ -66,13 +71,6 @@ Then open up a new tab and navigate to <http://localhost:8501/>
 
 ## TODO
 
-- [ ] implement memory by storing previous queries like <https://github.com/hwchase17/notion-qa/blob/master/main.py>
-- [ ] settings page
-  - [ ] that allows users to tweak open ai settings and provide custom prompt
-  - [ ] choose local or cloud storage version, so users don't have to setup AWS s3 and everything is local
-- [ ] use tempfile and tempdir instead of "/tmp"
-- [ ] test langchain openAiChat instead of llama index [OpenAIChat — 🦜🔗 LangChain 0.0.101](https://langchain.readthedocs.io/en/latest/modules/llms/integrations/openaichat.html)
-- [ ] test streaming with langchain [Streaming with LLMs — 🦜🔗 LangChain 0.0.101](https://langchain.readthedocs.io/en/latest/modules/llms/streaming_llm.html)
 - [ ] Compose indices of multiple lectures and query on all of them
   - [ ] selection to choose all lectures
   - [ ] loop through all current index, create the ones that haven't been created, and compose them together
@@ -82,6 +80,13 @@ Then open up a new tab and navigate to <http://localhost:8501/>
     - [Composability — LlamaIndex documentation](https://gpt-index.readthedocs.io/en/latest/how_to/composability.html)
     - [gpt_index/ComposableIndices.ipynb](https://github.com/jerryjliu/gpt_index/blob/main/examples/composable_indices/ComposableIndices.ipynb)
     - [Test Complex Queries over Multiple Documents](https://colab.research.google.com/drive/1IJAKd1HIe-LvFRQmd3BCDDIsq6CpOwBj?usp=sharing)
+- [ ] Custom prompts and tweak settings
+  - [ ] to tweak settings, require langchain
+    - [ ] This allows prefix messages and prompts but IDK how to feed index to it [OpenAIChat — 🦜🔗 LangChain 0.0.101](https://langchain.readthedocs.io/en/latest/modules/llms/integrations/openaichat.html)
+  - [ ] create a settings page for tweaking model parameters and provide custom prompts [example](https://github.com/hayabhay/whisper-ui)
+  - [ ] choose local or cloud storage version, so users don't have to setup AWS s3 and everything is downloaded locally
+- [ ] better code
+  - [ ] use tempfile and tempdir instead of "/tmp"
 - [ ] deploy app on AWS
   - [ ] textbox to input openai api key
 
@@ -114,6 +119,8 @@ For `text-embedding-ada-002`, cost is $0.0004 / 1k tokens or 3000 pages/dollar
 ### Models
 
 For `gpt-3.5-turbo` model (ChatGPTAPI) cost is `$0.002 / 1K tokens`
+
+For `text-davinci-003` model, cost is `$0.02 / 1K tokens`
 
 - [Chat completion - OpenAI API](https://platform.openai.com/docs/guides/chat)
 
