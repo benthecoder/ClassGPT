@@ -14,10 +14,11 @@ https://user-images.githubusercontent.com/49143413/222878151-42354446-5234-41fa-
 
 ## How this works
 
-TODO
-
-- explain what llamaindex does
-- explain [index](notebooks/index.json) created by LlamaIndex.
+- Pdf data loader from [LlamaHub](https://llamahub.ai/) loads the pdf files
+- llamaindex's `GPTSimpleVectorIndex` takes the text data, creates index, and acts as a wrapper for GPT models, which uses
+  - `text-embedding-ada-002` to create embeddings
+  - `gpt-3.5-turbo` to query the embeddings
+  - here's what an index created by LlamaIndex looks like [sample](notebooks/index.json)
 
 ## Usage
 
@@ -67,7 +68,13 @@ Then open up a new tab and navigate to http://localhost:8501/
 
 ## TODO
 
-- [ ] Host on EC2
+- [ ] implement memory by storing previous queries like https://github.com/hwchase17/notion-qa/blob/master/main.py
+- [ ] settings page
+  - [ ] that allows users to tweak open ai settings and provide custom prompt
+  - [ ] choose local or cloud storage version, so users don't have to setup AWS s3 and everything is local
+- [ ] use tempfile and tempdir instead of "/tmp"
+- [ ] test langchain openAiChat instead of llama index [OpenAIChat — 🦜🔗 LangChain 0.0.101](https://langchain.readthedocs.io/en/latest/modules/llms/integrations/openaichat.html)
+- [ ] test streaming with langchain [Streaming with LLMs — 🦜🔗 LangChain 0.0.101](https://langchain.readthedocs.io/en/latest/modules/llms/streaming_llm.html)
 - [ ] Compose indices of multiple lectures and query on all of them
   - [ ] selection to choose all lectures
   - [ ] loop through all current index, create the ones that haven't been created, and compose them together
@@ -76,8 +83,9 @@ Then open up a new tab and navigate to http://localhost:8501/
   - references
     - [Composability — LlamaIndex documentation](https://gpt-index.readthedocs.io/en/latest/how_to/composability.html)
     - [gpt_index/ComposableIndices.ipynb](https://github.com/jerryjliu/gpt_index/blob/main/examples/composable_indices/ComposableIndices.ipynb)
-- [ ] experiment with custom chatgpt api prompt
-- [ ] figure out cloud hosting that accepts openai api key
+    - [Test Complex Queries over Multiple Documents](https://colab.research.google.com/drive/1IJAKd1HIe-LvFRQmd3BCDDIsq6CpOwBj?usp=sharing)
+- [ ] Host on EC2
+  - [ ] textbox to input openai api key
 
 ## FAQ
 
@@ -105,12 +113,20 @@ For `text-embedding-ada-002`, cost is $0.0004 / 1k tokens or 3000 pages/dollar
 - [Embeddings - OpenAI API](https://platform.openai.com/docs/guides/embeddings/use-cases)
 - [What Are Word and Sentence Embeddings?](https://txt.cohere.ai/sentence-word-embeddings/)
 
+### Models
+
+For `gpt-3.5-turbo` model (ChatGPTAPI) cost is `$0.002 / 1K tokens`
+
+- [Chat completion - OpenAI API](https://platform.openai.com/docs/guides/chat)
+
 ## References
 
 ### Streamlit
 
 - [How do I increase the upload limit of st.file_uploader on Streamlit Community Cloud? - Streamlit Docs](https://docs.streamlit.io/knowledge-base/deploy/increase-file-uploader-limit-streamlit-cloud)
 - [hayabhay/whisper-ui: Streamlit UI for OpenAI's Whisper](https://github.com/hayabhay/whisper-ui)
+- [Streamlit Deployment Guide (wiki) - 🚀 Deployment - Streamlit](https://discuss.streamlit.io/t/streamlit-deployment-guide-wiki/5099)
+- [st.cache_resource - Streamlit Docs](https://docs.streamlit.io/library/api-reference/performance/st.cache_resource)
 
 ### LlamaIndex
 
