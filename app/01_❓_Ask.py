@@ -1,4 +1,5 @@
 import streamlit as st
+from components.sidebar import sidebar
 from config import get_page_config
 from s3 import S3
 from utils import query_gpt, show_pdf
@@ -12,6 +13,9 @@ if "chosen_class" not in st.session_state:
 
 if "chosen_pdf" not in st.session_state:
     st.session_state.chosen_pdf = "--"
+
+
+sidebar()
 
 st.header("ClassGPT: ChatGPT for your lectures slides")
 
@@ -48,9 +52,11 @@ if st.session_state.chosen_class != "--":
                 - `Provide 5 practice questions on this lecture with answers`
                 """
             )
-            query = st.text_input("Enter your question")
+            query = st.text_area("Enter your question", max_chars=200)
 
             if st.button("Ask"):
+                if query == "":
+                    st.error("Please enter a question")
                 with st.spinner("Generating answer..."):
                     res = query_gpt(chosen_class, chosen_pdf, query)
                     st.markdown(res)
