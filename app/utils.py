@@ -8,11 +8,19 @@ from io import BytesIO
 import openai
 import streamlit as st
 from dotenv import load_dotenv
+from langchain import OpenAI
+
+# langchain
+from langchain.agents import Tool, initialize_agent
+from langchain.chains.conversation.memory import ConversationBufferMemory
+
+# llama_index
 from llama_index import Document, GPTSimpleVectorIndex
 from llama_index.langchain_helpers.chatgpt import ChatGPTLLMPredictor
 from pypdf import PdfReader
 from s3 import S3
 
+# set to DEBUG for more verbose logging
 logging.basicConfig(stream=sys.stdout, level=logging.INFO)
 
 # load OPENAI API KEY
@@ -108,6 +116,51 @@ def query_gpt(chosen_class, chosen_pdf, query):
     # logging.info(response.get_formatted_sources())
 
     return response
+
+
+@st.cache_resource
+def create_tool(_index, chosen_pdf):
+    tools = [
+        Tool(
+            name=f"{chosen_pdf} index",
+            func=lambda q: str(_index.query(q)),
+            description="Useful to answering questions about the given file",
+            return_direct=True,
+        ),
+    ]
+
+    return tools
+
+
+@st.cache_resource
+def create_agent(chosen_class, chosen_pdf):
+    memory = ConversationBufferMemory(memory_key="chat_history")
+    llm = OpenAI(temperature=0, model_name="gpt-3.5-turbo")
+
+    index = get_index(chosen_class, chosen_pdf)
+    tools = create_tool(index, chosen_pdf)
+
+    agent = initialize_agent(
+        tools, llm, agent="conversational-react-description", memory=memory
+    )
+
+    return agent
+
+
+def query_gpt_memory(chosen_class, chosen_pdf, query):
+
+    agent = create_agent(chosen_class, chosen_pdf)
+    res = ""
+
+    try:
+        res = agent.run(input=query)
+    except Exception as e:
+        logging.error(e)
+        res = "Something went wrong... Please try again."
+
+    st.session_state.memory = agent.memory.buffer
+
+    return res
 
 
 # ------------------- Render PDF ------------------- #

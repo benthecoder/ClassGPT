@@ -1,12 +1,12 @@
 {
   "docstore": {
     "docs": {
-      "fc5a49a1-2603-4722-b034-3baa993d57a8": {
+      "eb0ac69b-4d62-46ab-9c9e-7d40136c9c0d": {
         "__type__": "simple_dict",
-        "doc_id": "fc5a49a1-2603-4722-b034-3baa993d57a8",
+        "doc_id": "eb0ac69b-4d62-46ab-9c9e-7d40136c9c0d",
         "embedding": null,
         "embeddings_dict": {
-          "d9829fec-138c-4e6a-b541-439d691ee154": [
+          "3e6bad2c-8631-4352-8c7b-77c2f207b8f0": [
             -0.005091537721455097,
             -0.0019130054861307144,
             0.006239341106265783,
@@ -1547,12 +1547,12 @@
         },
         "extra_info": null,
         "id_map": {
-          "d9829fec-138c-4e6a-b541-439d691ee154": 3110462787898936061
+          "3e6bad2c-8631-4352-8c7b-77c2f207b8f0": 7804824146984106564
         },
         "nodes_dict": {
-          "3110462787898936061": {
+          "7804824146984106564": {
             "child_indices": [],
-            "doc_id": "57cbced8-1a8b-41af-9c0b-b7a334b7fbd0",
+            "doc_id": "6ef465ed-ca0c-4e6b-85e9-7d02b03bf63b",
             "embedding": null,
             "extra_info": null,
             "index": 0,
@@ -1560,7 +1560,7 @@
               "end": 5753,
               "start": 0
             },
-            "ref_doc_id": "08c39c4c-da85-4434-9e09-58aef94b455d",
+            "ref_doc_id": "04983d90-d213-481b-a496-e83882124d36",
             "text": "11ARTIFICIAL \nINTELLIGENCE\nIntroduction\n2Outline\n\uf06cWhat is AI?\n\uf06cA brief history\n\uf06cWhat can AI do?\n23What is Intelligence\n4What is Intelligence\n\uf06cA wish-list of general characteristics of intelligence\n\uf06cPerception : manipulation, inter pretation of data provided by sensors\n\uf06cAction : control, and use of effectors  to accomplish a variety of task s \n\uf06cReasoning : deductive (logical) infer ence, inductive inference, \n\uf06cLearning : adapting behavior to better c ope with changing environments, \ndiscovery of patterns, learning to reason, plan, and act.\n\uf06cCommunication : with other intelligent agents including humans using \nsignals, signs, icons, \u2026\n\uf06cPlanning : formulation of plans -- sequences or agenda of actions to \naccomplish externally or internally determined goals\n\uf06c\u2026\n35What is AI?\n\uf06cThe exciting new effort to make computers think .. machines with \nminds\n\uf06cAI is the art of creating machi nes that perform functions that \nrequire intelligence w hen performed by humans\n\uf06cAI is the study of the computati ons that make it possible to \nperceive, reason, and act\n\uf06cAI is the enterprise of desi gn and analysis of intelligent agen ts.\n6Acting humanly: Turing Test\n\uf06cAlan Turing (1950) \"Computing machinery and intelligence\":\n\uf06c\"Can machines think?\" \uf0e0\"Can machines behave intelligently?\"\n\uf06cOperational test for intelligent behavior: the Imitation Game\n\uf06cPredicted that by 2000, a machine might have a 30% chance of fo oling \na lay person for 5 minutes\n\uf06cAnnual Loebner prize competition (since 1990)\n\uf06cHow good are current chatbots?\n\n47What is AI?\nThinking humanly Thinking rationally \nActing humanly Acting rationally \n\uf06cAre you concerned with thought processes/reasoning or behavior ?\n\uf06cDo you want to model humans or measure against an ideal concept of \nintelligence, rationality\n8Acting rationally: rational \nagent\n\uf06cThis course is about designing rational agents\n\uf06cAdvocated by the textbook \n\uf06cRational behavior: doing the right thing\n\uf06cThe right thing: that which i s expected to maximize goal \nachievement, given the available information\n\uf06cAn agent is an entity that perceives and acts\n\uf06cA rational agent is one that acts so as to achieve the best outcome\n59Brief history of AI\n\uf06c1943     McCulloch & Pitts: model of artificial neurons \n\uf06c1950     Turing's \"Computing Machinery and Intelligence\u201c\n\uf06c1956 McCarthy, Minsky, Newell, Simon, Turing, Uhr, et al., \nDartmouth workshop: \"Artificial Intelligence\" adopted\n\uf06c1952\u201469 Early enthusiasm, great expectations, optimism fueled \nby early success on some problems thought to be hard (e.g., theorem proving) \n\uf06c1966\u201473 Collapse in AI research: Progress was slower than \nexpected, Unrealistic predictions, Herbert Simon (1957) chess champion in 10 years    AI discovers computational complexity\n10Brief history of AI\n\uf06c1969\u201479 Early development o f knowledge-based systems\n\uf06c1980--- AI becomes an industr y: Expert systems industry \nbooms, then busts (88- 93): \u201cAI Winter\u201c\n\uf06c1986-- Neural networks return to popularity\n\uf06c1987-- AI becomes a science: rev olution in t he content and \nmethodology of work in AI, great advance, active research field since\n611Brief History of AI\n\uf06cMid 1990s-present :  The emer gence of intelligent agents \n\uf06cAI technologies continue to find applications in \n\uf06cinformation retrieval, \n\uf06cdata mining and knowledge discovery, \n\uf06ccustomizable software systems, \n\uf06csmart devices (e.g., homes, automobiles), \n\uf06cagile manufacturing systems, \n\uf06cautonomous vehicles, \n\uf06cBioinformatics\n\uf06cInternet tools: search engines, recommender systems\n\uf06cetc. \n\uf06cSteady progress on fundamental AI research problems \ncontinues.\n12Brief History of AI\n\uf06cSince 2006:  the emergence of deep learning\n\uf06cSuccessful large-scale real-world  applications (2011-present) i n \n\uf06cimage recognition\n\uf06cnatural language processing\n\uf06cspeech recognition\n\uf06cmachine translation\n\uf06c\u2026\n7Strong AI\n\uf06cNarrow/Weak AI\n\uf06cArtificial General Intelligence\n\uf06cSingularity: Ray Kurzweil, \u201cThe singularity is near \n(2005)\u201d\n\uf06cTranscendence (2014) \n\uf06cEx Machina (2015): \u201cOne day the AIs are going to look back on \nus the same way we look at fossil skeletons on the plains of Africa. An upright ape living in dust with crude language and tools, all set for extinction.\u201d \n13\n14What can AI do \n\uf06cDeep Blue defeated the reigning wo rld chess champion Garry Kasp arov in \n1997 \n\uf06cChinook defeated human checkers c hampion in 1994, can't lose at  \ncheckers 2007\n\uf06cThe IBM supercomputer Watson beat human champions on 'Jeopardy! \u2018 \n(2011)\n\uf06cAlphaGo beat a top Go player in  2016. AlphaGo Zer o stronger than any \nhuman player (2017)\n\uf06cCMU's poker computer defeated the world\u2019s best Texas Hold \u2018em po ker \nplayers head-to-head 2017, six-player July 2019\n\uf06cAI defeated human pros a t StarCraft II, Dota (2019)\n815What can AI do \n\uf06cProved a mathematical conjecture (Robbins conjecture, 1996) uns olved \nfor 60 years \n\uf06cDuring the 1991 Gulf War, US forces deployed an AI logistics pl anning \nand scheduling program that involved up to 50,000 vehicles, car go, and \npeople, save the US more money than spent on all AI research si nce \n1950\n\uf06cNASA's on-board autonomous planning program controlled the scheduling of operations for a spacecraft (2000), Mars Explorat ion \nRovers (2004).\n16What can AI do \n\uf06cDriverless cars\n\uf06cNo hands across America (driving autonomously 98% of the time f rom Pittsburgh \nto San Diego, 1995)\n\uf06cDARPA Grand Challenge prize competition for driverless cars (20 07)\n\uf06cDriverless vans completed 8000-mile trip from Italy to China (J uly-Oct 2010)\n\uf06cGoogle\u2019s driverless cars, l egal in Nevada and California\n\uf06cGreat progress in image recognition, speech recognition, machin e \ntranslation: Deep Learning\n\uf06cRobotic scientists make scientific  discoveries by itself (Scien ce 2009): \nformulation of hypotheses and des igning of experiments to test them \nAITopics site: https://aitopics.org/"
           }
         },
@@ -1568,11 +1568,11 @@
       }
     }
   },
-  "index_struct_id": "fc5a49a1-2603-4722-b034-3baa993d57a8",
+  "index_struct_id": "eb0ac69b-4d62-46ab-9c9e-7d40136c9c0d",
   "vector_store": {
     "simple_vector_store_data_dict": {
       "embedding_dict": {
-        "d9829fec-138c-4e6a-b541-439d691ee154": [
+        "3e6bad2c-8631-4352-8c7b-77c2f207b8f0": [
           -0.005091537721455097,
           -0.0019130054861307144,
           0.006239341106265783,
@@ -3112,7 +3112,7 @@
         ]
       },
       "text_id_to_doc_id": {
-        "d9829fec-138c-4e6a-b541-439d691ee154": "08c39c4c-da85-4434-9e09-58aef94b455d"
+        "3e6bad2c-8631-4352-8c7b-77c2f207b8f0": "04983d90-d213-481b-a496-e83882124d36"
       }
     }
   }

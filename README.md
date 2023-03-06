@@ -2,7 +2,9 @@
 
 > ChatGPT for my lecture slides
 
-Built with [LlamaIndex](https://github.com/jerryjliu/gpt_index) and uses the latest [ChatGPT API](https://platform.openai.com/docs/guides/chat) from [OpenAI](https://openai.com/).
+Built with [Streamlit](https://github.com/streamlit/streamlit), powered by [LlamaIndex](https://github.com/jerryjliu/gpt_index) and [LangChain](https://github.com/hwchase17/langchain).
+
+Uses the latest [ChatGPT API](https://platform.openai.com/docs/guides/chat) from [OpenAI](https://openai.com/).
 
 Inspired by [AthensGPT](http://athensgpt.com/)
 
@@ -14,10 +16,11 @@ https://user-images.githubusercontent.com/49143413/222878151-42354446-5234-41fa-
 
 1. Parses pdf with [pypdf](https://pypi.org/project/pypdf/)
 2. Index Construction with LlamaIndex's `GPTSimpleVectorIndex`
-   - `text-embedding-ada-002` is used to create embeddings
-   - [sample index](notebooks/index.json)
+   - the `text-embedding-ada-002` model is used to create embeddings
+   - see [vector store index](https://gpt-index.readthedocs.io/en/latest/guides/index_guide.html#vector-store-index) page to learn more
+   - here's a [sample index](notebooks/index.json)
 3. indexes and files are stored on s3
-4. Query the index with [ChatGPTLLMPredictor](https://github.com/jerryjliu/gpt_index/blob/7943157bed3b5a8527ac0f8dbe863ca0a39c22d0/gpt_index/langchain_helpers/chatgpt.py#L15)
+4. Query the index
    - uses the latest ChatGPT model `gpt-3.5-turbo`
 
 ## Usage
@@ -68,7 +71,9 @@ Then open up a new tab and navigate to <http://localhost:8501/>
 
 ## TODO
 
-- [ ] Compose indices of multiple lectures and query on all of them
+- [ ] fix ValueError: Could not parse LLM output [issues](https://github.com/hwchase17/langchain/issues/1358)
+- [ ] Add ability to query on multiple files
+  - [ ] Compose indices of multiple lectures and query on all of them
   - [ ] loop through all existing index, create the ones that haven't been created, and compose them together
   - references
     - [Composability — LlamaIndex documentation](https://gpt-index.readthedocs.io/en/latest/how_to/composability.html)
@@ -119,6 +124,7 @@ For `text-davinci-003` model, cost is `$0.02 / 1K tokens`
 
 - [Increase upload limit of st.file_uploader](https://docs.streamlit.io/knowledge-base/deploy/increase-file-uploader-limit-streamlit-cloud)
 - [st.cache_resource - Streamlit Docs](https://docs.streamlit.io/library/api-reference/performance/st.cache_resource)
+- [Session State](https://docs.streamlit.io/library/api-reference/session-state)
 - [hayabhay/whisper-ui: Streamlit UI for OpenAI's Whisper](https://github.com/hayabhay/whisper-ui)
 
 ### Deplyoment
