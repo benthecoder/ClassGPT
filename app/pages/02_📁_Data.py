@@ -1,9 +1,11 @@
 import streamlit as st
+from components.sidebar import sidebar
 from config import get_page_config
 from s3 import S3
 
 st.set_page_config(**get_page_config())
 
+sidebar()
 bucket_name = "classgpt"
 s3 = S3(bucket_name)
 all_classes = s3.list_files()
@@ -19,8 +21,6 @@ with tab1:
         index=len(all_classes),
     )
 
-    st.write("Don't see your class? Add it in the next tab.")
-
     if chosen_class != "--":
         with st.form("upload_pdf"):
             uploaded_files = st.file_uploader(
@@ -29,17 +29,18 @@ with tab1:
 
             submit_button = st.form_submit_button("Upload")
 
-            if submit_button and uploaded_files:
-                with st.spinner("Uploading files..."):
-                    for uploaded_file in uploaded_files:
-                        s3.upload_files(
-                            uploaded_file,
-                            f"{chosen_class}/{uploaded_file.name}",
-                        )
+            if submit_button:
+                if len(uploaded_files) == 0:
+                    st.error("Please upload at least one file")
+                else:
+                    with st.spinner(f"Uploading {len(uploaded_files)} files..."):
+                        for uploaded_file in uploaded_files:
+                            s3.upload_files(
+                                uploaded_file, f"{chosen_class}/{uploaded_file.name}"
+                            )
 
-                    st.success(f"{len(uploaded_files)} files uploaded")
-            else:
-                st.error("No files uploaded")
+                        st.success(f"{len(uploaded_files)} files uploaded")
+
 
 with tab2:
     st.subheader("Add a new class")
