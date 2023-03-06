@@ -2,7 +2,7 @@
 
 > ChatGPT for my lecture slides
 
-Built with [LlamaIndex](https://github.com/jerryjliu/gpt_index) and uses the latest [ChatGPT API](https://platform.openai.com/docs/guides/chat) from [OpenAI](https://openai.com/). The lecture pdfs and indices are stored on s3.
+Built with [LlamaIndex](https://github.com/jerryjliu/gpt_index) and uses the latest [ChatGPT API](https://platform.openai.com/docs/guides/chat) from [OpenAI](https://openai.com/).
 
 Inspired by [AthensGPT](http://athensgpt.com/)
 
@@ -12,15 +12,12 @@ https://user-images.githubusercontent.com/49143413/222878151-42354446-5234-41fa-
 
 ## How this works
 
-LlamaIndex helps you easily connect LLM’s to external data.
-
-The usage pattern of LlamaIndex for this app is as follows:
-
-1. Load in documents with [PDFReader()](https://llamahub.ai/l/file-pdf) from [LlamaHub](https://llamahub.ai/)
-2. Index Construction with `GPTSimpleVectorIndex`
+1. Parses pdf with [pypdf](https://pypi.org/project/pypdf/)
+2. Index Construction with LlamaIndex's `GPTSimpleVectorIndex`
    - `text-embedding-ada-002` is used to create embeddings
    - [sample index](notebooks/index.json)
-3. Query the index with [ChatGPTLLMPredictor](https://github.com/jerryjliu/gpt_index/blob/7943157bed3b5a8527ac0f8dbe863ca0a39c22d0/gpt_index/langchain_helpers/chatgpt.py#L15)
+3. indexes and files are stored on s3
+4. Query the index with [ChatGPTLLMPredictor](https://github.com/jerryjliu/gpt_index/blob/7943157bed3b5a8527ac0f8dbe863ca0a39c22d0/gpt_index/langchain_helpers/chatgpt.py#L15)
    - uses the latest ChatGPT model `gpt-3.5-turbo`
 
 ## Usage
@@ -72,23 +69,15 @@ Then open up a new tab and navigate to <http://localhost:8501/>
 ## TODO
 
 - [ ] Compose indices of multiple lectures and query on all of them
-  - [ ] selection to choose all lectures
-  - [ ] loop through all current index, create the ones that haven't been created, and compose them together
-  - [ ] as new slides come in, insert it to the index
-  - [ ] query on the composed index
+  - [ ] loop through all existing index, create the ones that haven't been created, and compose them together
   - references
     - [Composability — LlamaIndex documentation](https://gpt-index.readthedocs.io/en/latest/how_to/composability.html)
     - [gpt_index/ComposableIndices.ipynb](https://github.com/jerryjliu/gpt_index/blob/main/examples/composable_indices/ComposableIndices.ipynb)
     - [Test Complex Queries over Multiple Documents](https://colab.research.google.com/drive/1IJAKd1HIe-LvFRQmd3BCDDIsq6CpOwBj?usp=sharing)
 - [ ] Custom prompts and tweak settings
-  - [ ] to tweak settings, require langchain
-    - [ ] This allows prefix messages and prompts but IDK how to feed index to it [OpenAIChat — 🦜🔗 LangChain 0.0.101](https://langchain.readthedocs.io/en/latest/modules/llms/integrations/openaichat.html)
   - [ ] create a settings page for tweaking model parameters and provide custom prompts [example](https://github.com/hayabhay/whisper-ui)
   - [ ] choose local or cloud storage version, so users don't have to setup AWS s3 and everything is downloaded locally
-- [ ] better code
-  - [ ] use tempfile and tempdir instead of "/tmp"
 - [ ] deploy app on AWS
-  - [ ] textbox to input openai api key
 
 ## FAQ
 
@@ -146,6 +135,8 @@ Loading data
 
 - [PDF Loader](https://llamahub.ai/l/file-pdf)
 - [llama-hub github repo](https://github.com/emptycrown/llama-hub/tree/main)
+- [document class](https://github.com/jerryjliu/gpt_index/blob/f07050b84309d53842a3552d3546e765012d168c/gpt_index/readers/schema/base.py#L4)
+- [PDFReader class](https://github.com/emptycrown/llama-hub/blob/main/loader_hub/file/pdf/base.py)
 
 ChatGPT
 
