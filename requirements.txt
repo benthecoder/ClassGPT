@@ -1,6 +1,7 @@
 boto3==1.24.96
 botocore==1.27.96
-llama_index==0.4.20
+langchain==0.0.102
+llama_index==0.4.22
 openai==0.27.0
 pypdf==3.5.1
 python-dotenv==1.0.0

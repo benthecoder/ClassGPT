@@ -2,7 +2,7 @@ import streamlit as st
 from components.sidebar import sidebar
 from config import get_page_config
 from s3 import S3
-from utils import query_gpt_memory, show_pdf
+from utils import query_gpt, query_gpt_memory, show_pdf
 
 st.set_page_config(**get_page_config())
 
@@ -61,11 +61,12 @@ if st.session_state.chosen_class != "--":
                 if query == "":
                     st.error("Please enter a question")
                 with st.spinner("Generating answer..."):
-                    res = query_gpt_memory(chosen_class, chosen_pdf, query)
+                    # res = query_gpt_memory(chosen_class, chosen_pdf, query)
+                    res = query_gpt(chosen_class, chosen_pdf, query)
                     st.markdown(res)
 
-                    with st.expander("Memory"):
-                        st.write(st.session_state.memory.replace("\n", "\n\n"))
+                    # with st.expander("Memory"):
+                    #      st.write(st.session_state.memory.replace("\n", "\n\n"))
 
         with col2:
             show_pdf(chosen_class, chosen_pdf)

@@ -18,5 +18,7 @@ def format_output(memory):
     pass
 
 
-memory = st.session_state.memory
-st.write(memory.replace("\n", "\n\n"))
+# memory = st.session_state.memory
+# st.write(memory.replace("\n", "\n\n"))
+
+st.write("WIP...")
