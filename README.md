@@ -2,6 +2,8 @@
 
 > ChatGPT for my lecture slides
 
+<img width="1251" alt="SCR-20230307-isgj" src="https://user-images.githubusercontent.com/49143413/223467346-473681e4-6203-4f31-a1f1-253829d4768a.png">
+
 Built with [Streamlit](https://github.com/streamlit/streamlit), powered by [LlamaIndex](https://github.com/jerryjliu/gpt_index) and [LangChain](https://github.com/hwchase17/langchain).
 
 Uses the latest [ChatGPT API](https://platform.openai.com/docs/guides/chat) from [OpenAI](https://openai.com/).
