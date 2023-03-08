@@ -73,7 +73,10 @@ Then open up a new tab and navigate to <http://localhost:8501/>
 
 ## TODO
 
-- [ ] fix ValueError: Could not parse LLM output [issues](https://github.com/hwchase17/langchain/issues/1358)
+- [ ] update code to use new langchain abstractions
+   - [ ] refer to [Agent — 🦜🔗 LangChain 0.0.103](https://langchain.readthedocs.io/en/latest/modules/chat/examples/agent.html)
+   - [ ] memory now returns list of messages [ConversationBufferMemory — 🦜🔗 LangChain 0.0.103](https://langchain.readthedocs.io/en/latest/modules/memory/types/buffer.html)
+   - [ ] test using only langchain to create documents [Chat Vector DB — 🦜🔗 LangChain 0.0.103](https://langchain.readthedocs.io/en/latest/modules/chat/examples/chat_vector_db.html)
 - [ ] Add ability to query on multiple files
   - [ ] Compose indices of multiple lectures and query on all of them
   - [ ] loop through all existing index, create the ones that haven't been created, and compose them together
