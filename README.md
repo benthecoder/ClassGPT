@@ -73,10 +73,14 @@ Then open up a new tab and navigate to <http://localhost:8501/>
 
 ## TODO
 
-- [ ] update code to use new langchain abstractions
-   - [ ] refer to [Agent — 🦜🔗 LangChain 0.0.103](https://langchain.readthedocs.io/en/latest/modules/chat/examples/agent.html)
-   - [ ] memory now returns list of messages [ConversationBufferMemory — 🦜🔗 LangChain 0.0.103](https://langchain.readthedocs.io/en/latest/modules/memory/types/buffer.html)
-   - [ ] test using only langchain to create documents [Chat Vector DB — 🦜🔗 LangChain 0.0.103](https://langchain.readthedocs.io/en/latest/modules/chat/examples/chat_vector_db.html)
+- [ ] local mode for app (no s3)
+  - [ ] global variable use_s3 to toggle between local and s3 mode
+- [ ] deploy app to streamlit cloud
+  - [ ] have input box for openai key
+  - [ ] uses pyarrow local FS to store files
+- [ ] update code for new langchain update
+- [ ] Custom prompts and tweak settings
+  - [ ] create a settings page for tweaking model parameters and provide custom prompts [example](https://github.com/hayabhay/whisper-ui)
 - [ ] Add ability to query on multiple files
   - [ ] Compose indices of multiple lectures and query on all of them
   - [ ] loop through all existing index, create the ones that haven't been created, and compose them together
@@ -84,10 +88,6 @@ Then open up a new tab and navigate to <http://localhost:8501/>
     - [Composability — LlamaIndex documentation](https://gpt-index.readthedocs.io/en/latest/how_to/composability.html)
     - [gpt_index/ComposableIndices.ipynb](https://github.com/jerryjliu/gpt_index/blob/main/examples/composable_indices/ComposableIndices.ipynb)
     - [Test Complex Queries over Multiple Documents](https://colab.research.google.com/drive/1IJAKd1HIe-LvFRQmd3BCDDIsq6CpOwBj?usp=sharing)
-- [ ] Custom prompts and tweak settings
-  - [ ] create a settings page for tweaking model parameters and provide custom prompts [example](https://github.com/hayabhay/whisper-ui)
-  - [ ] choose local or cloud storage version, so users don't have to setup AWS s3 and everything is downloaded locally
-- [ ] deploy app on AWS
 
 ## FAQ
 
