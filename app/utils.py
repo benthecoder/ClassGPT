@@ -13,10 +13,10 @@ from langchain import OpenAI
 # langchain
 from langchain.agents import Tool, initialize_agent
 from langchain.chains.conversation.memory import ConversationBufferMemory
+from langchain.chat_models import ChatOpenAI
 
 # llama_index
-from llama_index import Document, GPTSimpleVectorIndex
-from llama_index.langchain_helpers.chatgpt import ChatGPTLLMPredictor
+from llama_index import Document, GPTSimpleVectorIndex, LLMPredictor
 from pypdf import PdfReader
 from s3 import S3
 
@@ -59,14 +59,13 @@ def create_index(pdf_obj, folder_name, file_name):
     Create an index for a given PDF file and upload it to S3.
     """
 
-    llm_predictor = ChatGPTLLMPredictor()
     index_name = file_name.replace(".pdf", ".json")
 
     logging.info("Generating new index...")
     documents = parse_pdf(pdf_obj)
 
     logging.info("Creating index...")
-    index = GPTSimpleVectorIndex(documents, llm_predictor=llm_predictor)
+    index = GPTSimpleVectorIndex(documents)
 
     with tempfile.TemporaryDirectory() as tmp_dir:
         tmp_path = f"{tmp_dir}/{index_name}"
@@ -109,7 +108,11 @@ def get_index(folder_name, file_name):
 
 def query_gpt(chosen_class, chosen_pdf, query):
 
-    llm_predictor = ChatGPTLLMPredictor()
+    # LLM Predictor (gpt-3.5-turbo)
+    llm_predictor = LLMPredictor(
+        llm=ChatOpenAI(temperature=0, model_name="gpt-3.5-turbo")
+    )
+
     index = get_index(chosen_class, chosen_pdf)
     response = index.query(query, llm_predictor=llm_predictor)
 
