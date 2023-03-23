@@ -10,16 +10,16 @@ def sidebar():
             "3. Upload lectures for that class\n"
             "3. Ask a question on the ❓ Ask page\n"
         )
-        # api_key_input = st.text_input(
-        #    "OpenAI API Key",
-        #    type="password",
-        #    placeholder="sk-xxx...",
-        #    help="Get an API key here 👉 https://platform.openai.com/account/api-keys.",
-        #    value=st.session_state.get("OPENAI_API_KEY", ""),
-        # )
+        api_key_input = st.text_input(
+            "OpenAI API Key",
+            type="password",
+            placeholder="sk-xxx...",
+            help="Get an API key here 👉 https://platform.openai.com/account/api-keys.",
+            value=st.session_state.get("OPENAI_API_KEY", ""),
+        )
 
-        # if api_key_input:
-        #    st.session_state["OPENAI_API_KEY"] = api_key_input
+        if api_key_input:
+            st.session_state["OPENAI_API_KEY"] = api_key_input
 
         st.markdown(
             """

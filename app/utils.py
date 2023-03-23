@@ -24,10 +24,15 @@ from s3 import S3
 logging.basicConfig(stream=sys.stdout, level=logging.INFO)
 
 # load OPENAI API KEY
-load_dotenv()
-if os.getenv("OPENAI_API_KEY") is None:
-    st.error("OpenAI API key not set")
-openai.api_key = os.getenv("OPENAI_API_KEY")
+openai.api_key = st.session_state["OPENAI_API_KEY"]
+
+if not openai.api_key:
+    load_dotenv()
+    if os.getenv("OPENAI_API_KEY") is None:
+        st.error("OpenAI API key not set")
+    else:
+        openai.api_key = os.getenv("OPENAI_API_KEY")
+
 
 s3 = S3("classgpt")
 
@@ -107,6 +112,10 @@ def get_index(folder_name, file_name):
 
 
 def query_gpt(chosen_class, chosen_pdf, query):
+
+    if not openai.api_key:
+        st.error("OpenAI API key not set")
+        st.stop()
 
     # LLM Predictor (gpt-3.5-turbo)
     llm_predictor = LLMPredictor(

@@ -1,9 +1,6 @@
 import streamlit as st
 from components.sidebar import sidebar
-from config import get_page_config
 from s3 import S3
-
-st.set_page_config(**get_page_config())
 
 sidebar()
 bucket_name = "classgpt"
