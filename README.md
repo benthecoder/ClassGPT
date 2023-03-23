@@ -149,6 +149,10 @@ Loading data
 - [document class](https://github.com/jerryjliu/gpt_index/blob/f07050b84309d53842a3552d3546e765012d168c/gpt_index/readers/schema/base.py#L4)
 - [PDFReader class](https://github.com/emptycrown/llama-hub/blob/main/loader_hub/file/pdf/base.py)
 
+multimodal
+
+- [llama_index/Multimodal.ipynb at main](https://github.com/jerryjliu/llama_index/blob/main/examples/multimodal/Multimodal.ipynb)
+
 ChatGPT
 
 - [gpt_index/SimpleIndexDemo-ChatGPT.ipynb](https://github.com/jerryjliu/gpt_index/blob/main/examples/vector_indices/SimpleIndexDemo-ChatGPT.ipynb)

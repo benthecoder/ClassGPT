@@ -69,6 +69,9 @@ with tab3:
     if chosen_class != "--":
         all_pdfs = all_classes[chosen_class] + ["all"]
 
+        # Remove empty values
+        all_pdfs = [x for x in all_pdfs if x]
+
         chosen_pdf = st.selectbox(
             "Select a PDF file or choose 'all' to delete the whole class",
             all_pdfs + ["--"],
