@@ -17,6 +17,8 @@ if "chosen_pdf" not in st.session_state:
 if "memory" not in st.session_state:
     st.session_state.memory = ""
 
+if "OPENAI_API_KEY" not in st.session_state:
+    st.session_state["OPENAI_API_KEY"] = ""
 
 sidebar()
 
