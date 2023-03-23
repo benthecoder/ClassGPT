@@ -1,10 +1,19 @@
 import streamlit as st
 from components.sidebar import sidebar
-from config import get_page_config
 from s3 import S3
 from utils import query_gpt, query_gpt_memory, show_pdf
 
-st.set_page_config(**get_page_config())
+st.set_page_config(
+    page_title="ClassGPT",
+    page_icon="🤖",
+    layout="wide",
+    initial_sidebar_state="expanded",
+    menu_items={
+        "Get Help": "https://twitter.com/benthecoder1",
+        "Report a bug": "https://github.com/benthecoder/ClassGPT/issues",
+        "About": "ClassGPT is a chatbot that answers questions about your pdf files",
+    },
+)
 
 # Session states
 # --------------
@@ -17,8 +26,6 @@ if "chosen_pdf" not in st.session_state:
 if "memory" not in st.session_state:
     st.session_state.memory = ""
 
-if "OPENAI_API_KEY" not in st.session_state:
-    st.session_state["OPENAI_API_KEY"] = ""
 
 sidebar()
 
