@@ -1,7 +1,7 @@
 import streamlit as st
 from components.sidebar import sidebar
 from s3 import S3
-from utils import query_gpt, query_gpt_memory, show_pdf
+from utils import check_password, query_gpt, query_gpt_memory, show_pdf
 
 st.set_page_config(
     page_title="ClassGPT",
@@ -27,55 +27,61 @@ if "memory" not in st.session_state:
     st.session_state.memory = ""
 
 
-sidebar()
+def main():
+    st.header("ClassGPT: ChatGPT for your lectures slides")
 
-st.header("ClassGPT: ChatGPT for your lectures slides")
+    bucket_name = "classgpt"
+    s3 = S3(bucket_name)
 
-bucket_name = "classgpt"
-s3 = S3(bucket_name)
+    all_classes = s3.list_files()
 
-all_classes = s3.list_files()
-
-chosen_class = st.selectbox(
-    "Select a class", list(all_classes.keys()) + ["--"], index=len(all_classes)
-)
-
-st.session_state.chosen_class = chosen_class
-
-if st.session_state.chosen_class != "--":
-    all_pdfs = all_classes[chosen_class]
-
-    chosen_pdf = st.selectbox(
-        "Select a PDF file", all_pdfs + ["--"], index=len(all_pdfs)
+    chosen_class = st.selectbox(
+        "Select a class", list(all_classes.keys()) + ["--"], index=len(all_classes)
     )
 
-    st.session_state.chosen_pdf = chosen_pdf
+    st.session_state.chosen_class = chosen_class
 
-    if st.session_state.chosen_pdf != "--":
-        col1, col2 = st.columns(2)
+    if st.session_state.chosen_class != "--":
+        all_pdfs = all_classes[chosen_class]
 
-        with col1:
-            st.subheader("Ask a question")
-            st.markdown(
-                """
-                Here are some prompts:
-                - `What is the main idea of this lecture in simple terms?`
-                - `Summarize the main points of slide 5`
-                - `Provide 5 practice questions on this lecture with answers`
-                """
-            )
-            query = st.text_area("Enter your question", max_chars=200)
+        chosen_pdf = st.selectbox(
+            "Select a PDF file", all_pdfs + ["--"], index=len(all_pdfs)
+        )
 
-            if st.button("Ask"):
-                if query == "":
-                    st.error("Please enter a question")
-                with st.spinner("Generating answer..."):
-                    # res = query_gpt_memory(chosen_class, chosen_pdf, query)
-                    res = query_gpt(chosen_class, chosen_pdf, query)
-                    st.markdown(res)
+        st.session_state.chosen_pdf = chosen_pdf
 
-                    # with st.expander("Memory"):
-                    #      st.write(st.session_state.memory.replace("\n", "\n\n"))
+        if st.session_state.chosen_pdf != "--":
+            col1, col2 = st.columns(2)
 
-        with col2:
-            show_pdf(chosen_class, chosen_pdf)
+            with col1:
+                st.subheader("Ask a question")
+                st.markdown(
+                    """
+                    Here are some prompts:
+                    - `What is the main idea of this lecture in simple terms?`
+                    - `Summarize the main points of slide 5`
+                    - `Provide 5 practice questions on this lecture with answers`
+                    """
+                )
+                query = st.text_area("Enter your question", max_chars=200)
+
+                if st.button("Ask"):
+                    if query == "":
+                        st.error("Please enter a question")
+                    with st.spinner("Generating answer..."):
+                        # res = query_gpt_memory(chosen_class, chosen_pdf, query)
+                        res = query_gpt(chosen_class, chosen_pdf, query)
+                        st.markdown(res)
+
+                        # with st.expander("Memory"):
+                        #      st.write(st.session_state.memory.replace("\n", "\n\n"))
+
+            with col2:
+                show_pdf(chosen_class, chosen_pdf)
+
+
+if __name__ == "__main__":
+    sidebar()
+
+    if check_password():
+        main()
