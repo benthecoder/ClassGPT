@@ -35,9 +35,11 @@ https://user-images.githubusercontent.com/49143413/222878151-42354446-5234-41fa-
     aws configure
 ```
 
-2. create s3 bucket named `"classgpt"`
+2. create an s3 bucket with a unique name
 
-3. rename [.env.local.example] to `.env` and add your openai credentials
+3. Change the bucket name in the codebase (look for `bucket_name = "classgpt"` to whatever you created.
+
+4. rename [.env.local.example] to `.env` and add your openai credentials
 
 ### Locally
 
