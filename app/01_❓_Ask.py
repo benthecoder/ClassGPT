@@ -1,7 +1,8 @@
+
 import streamlit as st
 from components.sidebar import sidebar
 from s3 import S3
-from utils import query_gpt, query_gpt_memory, show_pdf
+from utils import query_gpt
 
 st.set_page_config(
     page_title="ClassGPT",
@@ -16,15 +17,11 @@ st.set_page_config(
 )
 
 # Session states
-# --------------
 if "chosen_class" not in st.session_state:
     st.session_state.chosen_class = "--"
 
 if "chosen_pdf" not in st.session_state:
     st.session_state.chosen_pdf = "--"
-
-if "memory" not in st.session_state:
-    st.session_state.memory = ""
 
 
 sidebar()
@@ -56,26 +53,16 @@ if st.session_state.chosen_class != "--":
 
         with col1:
             st.subheader("Ask a question")
-            st.markdown(
-                """
-                Here are some prompts:
-                - `What is the main idea of this lecture in simple terms?`
-                - `Summarize the main points of slide 5`
-                - `Provide 5 practice questions on this lecture with answers`
-                """
-            )
             query = st.text_area("Enter your question", max_chars=200)
-
+            
             if st.button("Ask"):
                 if query == "":
                     st.error("Please enter a question")
-                with st.spinner("Generating answer..."):
-                    # res = query_gpt_memory(chosen_class, chosen_pdf, query)
-                    res = query_gpt(chosen_class, chosen_pdf, query)
-                    st.markdown(res)
-
-                    # with st.expander("Memory"):
-                    #      st.write(st.session_state.memory.replace("\n", "\n\n"))
+                else:
+                    with st.spinner("Generating answer..."):
+                        res = query_gpt(chosen_class, chosen_pdf, query)
+                        st.markdown(res)
 
         with col2:
-            show_pdf(chosen_class, chosen_pdf)
+            # Show PDF
+            pass
